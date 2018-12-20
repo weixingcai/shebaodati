@@ -6,13 +6,18 @@ import router from './router'
 
 Vue.config.productionTip = false;
 
-import store from './vuex/index'
+// import store from './vuex/index'
+
+import Vant from 'vant';
+import 'vant/lib/index.css';
+
+Vue.use(Vant);
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  store,
+  // store,
   components: { App },
   template: '<App/>'
 })
