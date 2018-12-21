@@ -13,6 +13,8 @@ import 'vant/lib/index.css';
 
 Vue.use(Vant);
 
+import 'amfe-flexible'
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
