@@ -22,7 +22,9 @@ export default {
     },
     methods:{
         onClickLeft(){
-
+            this.$router.push({
+                path:'/index'
+            });
         }
     }
 }
