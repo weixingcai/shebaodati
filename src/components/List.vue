@@ -1,7 +1,7 @@
 <template>
     <div>
         <van-nav-bar
-            title="标题"
+            :title="title"
             left-text="返回"
             left-arrow
             @click-left="onClickLeft"
@@ -11,14 +11,15 @@
 
 <script>
 export default {
-    name:'',
+    name:'List',
     data(){
         return {
-
+            title:'',
         }
     },
     created(){
         console.log(this.$route);
+        this.title = decodeURIComponent(this.$route.query.text);
     },
     methods:{
         onClickLeft(){

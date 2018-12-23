@@ -16,10 +16,11 @@ export default new Router({
     {
       path: '/index',
       name: 'Index',
-      component: Index
+      component: Index,
+      // alias:'/'
     },
     {
-      path:'/list/:text',
+      path:'/list',
       name:'List',
       component:List
     }

@@ -7,10 +7,9 @@ import router from './router'
 Vue.config.productionTip = false;
 
 // import store from './vuex/index'
-
-import Vant from 'vant';
 import 'vant/lib/index.css';
 
+import Vant from 'vant';
 Vue.use(Vant);
 
 import 'amfe-flexible'

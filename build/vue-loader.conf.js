@@ -6,6 +6,7 @@ const sourceMapEnabled = isProduction
   ? config.build.productionSourceMap
   : config.dev.cssSourceMap
 
+const pxtorem = require('postcss-pxtorem');
 module.exports = {
   loaders: utils.cssLoaders({
     sourceMap: sourceMapEnabled,
@@ -18,5 +19,6 @@ module.exports = {
     source: 'src',
     img: 'src',
     image: 'xlink:href'
-  }
+  },
+
 }
