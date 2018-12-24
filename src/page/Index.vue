@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <div class="logo">
             <img src="/static/img/logo.png" alt="logo" class="logo-img">
         </div>
@@ -14,7 +14,7 @@
 <script>
 import { ajaxPost } from '@/ajax/ajax.js'
 export default {
-    name:'Index',
+    name:'index',
     data(){
         return {
             text:'',

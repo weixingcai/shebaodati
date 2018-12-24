@@ -21,6 +21,6 @@ export default {
   /* width: 10rem;
 	height: 17.79rem; */
   width: 375px;
-	height: 667px;
+	height: 100%;
 }
 </style>

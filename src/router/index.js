@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import HelloWorld from '@/page/HelloWorld'
 
-import Index from '@/components/Index'
-import List from '@/components/List'
+import Index from '@/page/Index'
+import List from '@/page/List'
+import Detail from '@/page/Detail'
+import Message from '@/page/Message'
 
 Vue.use(Router)
 
@@ -23,6 +25,16 @@ export default new Router({
       path:'/list',
       name:'List',
       component:List
+    },
+    {
+      path:'/detail',
+      name:'Detail',
+      component:Detail
+    },
+    {
+      path:'/message',
+      name:'Message',
+      component:Message
     }
   ]
 })

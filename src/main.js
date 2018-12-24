@@ -4,15 +4,17 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-Vue.config.productionTip = false;
-
 // import store from './vuex/index'
 import 'vant/lib/index.css';
-
 import Vant from 'vant';
 Vue.use(Vant);
 
 import 'amfe-flexible'
+
+import './assets/common.css'
+// import 'normalize.css'
+
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
