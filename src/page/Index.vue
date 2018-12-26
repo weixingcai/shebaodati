@@ -121,7 +121,7 @@ export default {
         /* font-size: 24px; */
         /* font-size: .32rem; */
         font-size: 12px;
-        letter-spacing: 1px;
+        letter-spacing: .5px;
         color: #cccccc;
     }
     .button{
