@@ -9,18 +9,21 @@
         <question :title="title"></question>
         <div class="answer van-hairline--bottom">
             <div class="asnwer-inner">
-                <p>aaaa</p>
+                <img :src="answer" alt="answer_img" class="answer-img" v-if="is_img === 1">
+                <p v-else>{{answer}}</p>
             </div>
         </div>
         <list-item 
             v-for="(item,index) of list" 
             :key="index" 
-            :title="item.title"
+            :title="item.question_title"
+            :id="item.id"
         />
     </div>
 </template>
 
 <script>
+import { ajaxPost } from '@/ajax/ajax.js'
 import Question from '@/components/Question'
 import listItem from '@/components/ListItem'
 export default {
@@ -31,28 +34,36 @@ export default {
     },
     data(){
         return {
+            id:'',
             title:'',
-            list:[
-                {
-                    title:'行政村（大队）交15年（征地）保险什么时候可以办退休？'
-                },
-                {
-                    title:'社保卡丢了，养老金发哪儿？'
-                },
-                {
-                    title:'判刑人员还能领养老金吗？（监外执行，社区看管的，吸了毒在社区戒毒的，养老金会停吗？）'
-                },
-                {
-                    title:'城乡退休之后还能交“五七工”保险吗？'
-                },
-            ]
+            answer:'',
+            is_img:0,
+            list:[]
         }
     },
     created(){
         console.log(this.$route);
-        this.title = decodeURIComponent(this.$route.query.text);
+        this.id = decodeURIComponent(this.$route.query.id);
+        this.getQuestionInfo(this.id);
     },
     methods:{
+        getQuestionInfo(id){
+            ajaxPost('/index/index/getQuestionInfo',{
+                id:id
+            },(res)=>{
+                console.log(res);
+                if (res.data.code == 1005) {
+                    this.list = res.data.data.child_info;
+                    this.title = res.data.data.question_title;
+                    this.answer = res.data.data.question_answer;
+                    this.is_img = res.data.data.is_img;
+                }else{
+
+                }
+            },(err)=>{
+                console.log(err);
+            });
+        },
         onClickLeft:function(){
             this.$router.go(-1);
         }
@@ -77,5 +88,11 @@ export default {
     .asnwer-inner>p{
         font-size: 12px;
 	    color: #4c4c4c;
+    }
+    .answer-img{
+        display: block;
+        width: 100%;
+        height: auto;
+        margin-bottom: 15px;
     }
 </style>

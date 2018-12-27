@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const base_url = 'http://pb.swcoc.cn';
+export const base_url = 'http://shebao.ueepub.cn';
 
 export const ajaxPost = function(url,data,suc,err){
     axios({

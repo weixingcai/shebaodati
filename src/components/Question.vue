@@ -33,7 +33,7 @@ export default {
         vertical-align: middle;
         color: #4c4c4c;
         font-size: 13px;
-        letter-spacing: 1px;
+        letter-spacing: .5px;
         padding: 0 0 0 22px;
         background-image: url(/static/img/question.png);
         background-repeat: no-repeat;

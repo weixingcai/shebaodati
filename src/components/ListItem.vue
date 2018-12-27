@@ -1,5 +1,5 @@
 <template>
-    <div class="list-item van-hairline--bottom" @click="toDetail(title)">
+    <div class="list-item van-hairline--bottom" @click="toDetail(id,title)">
         <p>{{title}}</p>
     </div>
 </template>
@@ -11,6 +11,10 @@ export default {
         title:{
             type:String,
             required:true
+        },
+        id:{
+            type:Number,
+            required:true
         }
     },
     data(){
@@ -18,12 +22,16 @@ export default {
             
         }
     },
+    created(){
+        
+    },
     methods:{
-        toDetail(text){
+        toDetail(id,title){
             this.$router.push({
                 name:'Detail',
                 query:{
-                    text:encodeURIComponent(text),
+                    id:encodeURIComponent(id),
+                    // text:encodeURIComponent(title),
                 }
             })
         }
@@ -38,7 +46,7 @@ export default {
     .list-item>p{
         font-size: 13px;
         line-height: 17px;
-        letter-spacing: 1px;
+        letter-spacing: .5px;
         color: #4c4c4c;
     }
 </style>

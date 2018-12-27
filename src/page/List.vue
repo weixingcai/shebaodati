@@ -10,14 +10,15 @@
         <list-item 
             v-for="(item,index) of list" 
             :key="index" 
-            :title="item.title"
+            :title="item.question_title"
+            :id="item.id"
         />
-        <div class="more-question">
-            <div class="more-question-button">查看更多问题</div>
+        <div class="more-question" v-if="level == 1">
+            <div class="more-question-button" @click="getAllQuestions(title)">查看更多问题</div>
         </div>
-        <div class="search-again">
+        <div class="search-again" v-if="level == 2">
             <div class="search-again-left">
-                <div class="search-again-left-button">重新查询</div>
+                <div class="search-again-left-button" @click="onClickLeft">重新查询</div>
             </div>
             <div class="search-again-right">
                 <div class="search-again-right-button">
@@ -29,6 +30,7 @@
 </template>
 
 <script>
+import { ajaxPost } from '@/ajax/ajax.js'
 import Question from '@/components/Question'
 import listItem from '@/components/ListItem'
 export default {
@@ -40,27 +42,45 @@ export default {
     data(){
         return {
             title:'',
-            list:[
-                {
-                    title:'行政村（大队）交15年（征地）保险什么时候可以办退休？'
-                },
-                {
-                    title:'社保卡丢了，养老金发哪儿？'
-                },
-                {
-                    title:'判刑人员还能领养老金吗？（监外执行，社区看管的，吸了毒在社区戒毒的，养老金会停吗？）'
-                },
-                {
-                    title:'城乡退休之后还能交“五七工”保险吗？'
-                },
-            ]
+            list:[],
+            level:1
         }
     },
     created(){
-        console.log(this.$route);
+        // console.log(this.$route);
         this.title = decodeURIComponent(this.$route.query.text);
+        this.getQuestions(this.title);
     },
     methods:{
+        getQuestions(question){
+            ajaxPost('/index/index/getQuestions',{
+                question:question
+            },(res)=>{
+                console.log(res);
+                if (res.data.code == 1005) {
+                    this.list = res.data.data;
+                }else{
+
+                }
+            },(err)=>{
+                console.log(err);
+            });
+        },
+        getAllQuestions(question){
+            ajaxPost('/index/index/getAllQuestions',{
+                question:question
+            },(res)=>{
+                console.log(res);
+                if (res.data.code == 1005) {
+                    this.list = res.data.data;
+                    this.level = 2;
+                }else{
+
+                }
+            },(err)=>{
+                console.log(err);
+            });
+        },
         onClickLeft(){
             this.$router.push({
                 path:'/index'
@@ -68,7 +88,7 @@ export default {
         },
         toMessage(){
             this.$router.push({
-                name:'Message'
+                name:'Message',
             });
         }
     }
@@ -88,10 +108,10 @@ export default {
         box-shadow: 0px 7px 16px 0px rgba(54, 115, 186, 0.35);
         margin: auto;
         text-align: center;
-        line-height: 35px;
+        line-height: 37px;
         vertical-align: middle;
         font-size: 12px;
-        letter-spacing: 1px;
+        letter-spacing: .5px;
 	    color: #ffffff;
     }
     .search-again{
@@ -110,7 +130,7 @@ export default {
         height: 35px;
         margin: auto;
         text-align: center;
-        line-height: 35px;
+        line-height: 37px;
         vertical-align: middle;
 
         background-image: linear-gradient(90deg,#2b51a2 0%,#3f91cf 100%),linear-gradient(#2f9bff,#2f9bff);
@@ -119,7 +139,7 @@ export default {
         border-radius: 17.5px;
         
         font-size: 12px;
-        letter-spacing: 1px;
+        letter-spacing: .5px;
 	    color: #ffffff;
     }
     .search-again-right-button{
@@ -143,7 +163,7 @@ export default {
         background-color: #ffffff;
         border-radius: 17.5px;
         font-size: 12px;
-        letter-spacing: 1px;
+        letter-spacing: .5px;
 	    color: #2b51a2;
     }
 </style>
