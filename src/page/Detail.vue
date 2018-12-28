@@ -9,8 +9,8 @@
         <question :title="title"></question>
         <div class="answer van-hairline--bottom">
             <div class="asnwer-inner">
-                <img :src="answer" alt="answer_img" class="answer-img" v-if="is_img === 1">
-                <p v-else>{{answer}}</p>
+                <img :src="'http://shebao.ueepub.cn' + answer" alt="answer_img" class="answer-img" v-if="is_img === 1">
+                <div v-html="answer" v-else></div>
             </div>
         </div>
         <list-item 
@@ -85,7 +85,7 @@ export default {
         box-shadow: 0px 1px 40px 0px rgba(221, 221, 221, 0.75);
 	    border-radius: 4px;
     }
-    .asnwer-inner>p{
+    .asnwer-inner>div{
         font-size: 12px;
 	    color: #4c4c4c;
     }
