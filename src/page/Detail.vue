@@ -69,8 +69,10 @@ export default {
         }
     },
     beforeRouteUpdate (to, from, next) {
-        console.log(to,from);
+        // console.log(to,from);
         this.title = decodeURIComponent(to.query.text);
+        this.id = decodeURIComponent(to.query.id);
+        this.getQuestionInfo(to.query.id);
         next();
     }
 }

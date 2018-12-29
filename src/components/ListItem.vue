@@ -31,7 +31,7 @@ export default {
                 name:'Detail',
                 query:{
                     id:encodeURIComponent(id),
-                    // text:encodeURIComponent(title),
+                    text:encodeURIComponent(title),
                 }
             })
         }
