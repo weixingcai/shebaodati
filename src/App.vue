@@ -10,7 +10,7 @@ export default {
   name: 'App'
 }
 </script>
-
+// 你好hello
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
