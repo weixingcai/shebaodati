@@ -12,6 +12,7 @@ export default {
 </script>
 
 <style>
+/* test000000000000000 */
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
