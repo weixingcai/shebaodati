@@ -11,6 +11,7 @@ export default {
 }
 </script>
 // 你好hello
+//weixc
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
