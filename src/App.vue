@@ -13,6 +13,7 @@ export default {
 
 <style>
 /* 我来测试以下99999999999999 */
+/* test000000000000000 */
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
